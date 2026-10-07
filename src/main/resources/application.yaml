@@ -13,6 +13,19 @@ spring:
 
     open-in-view: false
 
+
+  ai:
+    openai:
+      api-key: ${OPENROUTER_API_KEY}
+      base-url: https://openrouter.ai/api/v1
+      chat:
+        model: openrouter/free
+
+    model:
+      audio:
+        speech: none
+        transcription: none
+
 server:
   port: 8080
 
