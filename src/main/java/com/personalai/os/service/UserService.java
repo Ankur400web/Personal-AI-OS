@@ -3,6 +3,7 @@ package com.personalai.os.service;
 import com.personalai.os.dto.RegisterRequest;
 import com.personalai.os.dto.UserResponse;
 import com.personalai.os.entity.User;
+import com.personalai.os.exception.EmailAlreadyExistException;
 import com.personalai.os.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -27,7 +28,7 @@ public class UserService {
                 .toLowerCase();
 
         if (userRepository.existsByEmail(email)){
-            throw new RuntimeException("User already exist");
+            throw new EmailAlreadyExistException("Email already used");
         }
 
        String passHash = passwordEncoder.encode(registerRequest.getPassword());

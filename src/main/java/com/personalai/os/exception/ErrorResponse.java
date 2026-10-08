@@ -1,0 +1,17 @@
+package com.personalai.os.exception;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import java.time.OffsetDateTime;
+import java.util.Map;
+
+@Getter
+@AllArgsConstructor
+public class ErrorResponse {
+
+    private int status;
+    private String message;
+    private OffsetDateTime timestamp;
+    private Map<String, String> errors;
+}
