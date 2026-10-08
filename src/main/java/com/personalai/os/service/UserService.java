@@ -5,6 +5,7 @@ import com.personalai.os.dto.UserResponse;
 import com.personalai.os.entity.User;
 import com.personalai.os.exception.EmailAlreadyExistException;
 import com.personalai.os.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

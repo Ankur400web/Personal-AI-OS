@@ -2,6 +2,7 @@ package com.personalai.os.config;
 
 
 import com.personalai.os.security.JwtAuthenticationFilter;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -43,6 +44,15 @@ public class SecurityConfig {
                 .addFilterBefore(
                         jwtAuthenticationFilter,
                         UsernamePasswordAuthenticationFilter.class
+                )
+                .exceptionHandling(exception -> exception
+                        .authenticationEntryPoint(
+                                (request, response, authException) ->
+                                        response.sendError(
+                                                HttpServletResponse.SC_UNAUTHORIZED,
+                                                "Unauthorized"
+                                        )
+                        )
                 );
 
         return http.build();

@@ -46,14 +46,6 @@ public class AuthController {
                 .body(response);
     }
 
-    @GetMapping("/me")
-    public ResponseEntity<UserResponse> getCurrentUser(Authentication authentication) {
 
-        UUID userId = (UUID) authentication.getPrincipal();
-
-        UserResponse response = userService.getUserById(userId);
-
-        return ResponseEntity.ok(response);
-    }
 
 }
